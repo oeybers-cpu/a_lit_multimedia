@@ -153,6 +153,9 @@
             background: var(--card-bg);
             border-radius: var(--border-radius);
             padding: var(--card-padding);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
         }
 
         .content-header {
@@ -184,75 +187,33 @@
             outline: none;
         }
 
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .media-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .media-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .media-thumbnail {
-            height: 160px;
-            background: linear-gradient(135deg, var(--royal-blue), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .media-thumbnail i {
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .duration {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-
-        .media-info {
-            padding: 15px;
-        }
-
-        .media-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .media-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-gray);
-            font-size: 0.85rem;
-        }
-
         .empty-state {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             color: var(--text-gray);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 4rem;
+            margin-bottom: 20px;
             color: var(--royal-blue-light);
+            opacity: 0.7;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--lighter-accent);
+        }
+
+        .empty-state p {
+            max-width: 400px;
+            line-height: 1.6;
         }
 
         footer {
@@ -291,10 +252,6 @@
                 gap: 15px;
             }
             
-            .media-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .search-bar {
                 width: 100%;
                 margin-top: 15px;
@@ -330,18 +287,6 @@
                     <i class="fas fa-headphones"></i>
                     <span>Audio Resources</span>
                 </div>
-                <div class="tab" data-tab="favorites">
-                    <i class="fas fa-star"></i>
-                    <span>Favorites</span>
-                </div>
-                <div class="tab" data-tab="playlists">
-                    <i class="fas fa-list"></i>
-                    <span>My Playlists</span>
-                </div>
-                <div class="tab" data-tab="downloads">
-                    <i class="fas fa-download"></i>
-                    <span>Downloads</span>
-                </div>
             </div>
         </aside>
         
@@ -358,114 +303,16 @@
                 </div>
             </div>
             
-            <div class="media-grid" id="video-content">
-                <!-- Video content will be displayed here -->
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="duration">12:45</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Introduction to Academic Writing</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-eye"></i> 1.2K views</span>
-                            <span>2 days ago</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="duration">18:30</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Critical Thinking Strategies</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-eye"></i> 2.4K views</span>
-                            <span>1 week ago</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="duration">22:15</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Research Methodology Basics</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-eye"></i> 3.1K views</span>
-                            <span>2 weeks ago</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-play-circle"></i>
-                        <div class="duration">15:20</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Effective Note-Taking Techniques</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-eye"></i> 1.8K views</span>
-                            <span>3 weeks ago</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="empty-state" id="video-content">
+                <i class="fas fa-video"></i>
+                <h3>Visit Soon for New Content</h3>
+                <p>Our video library is currently under development. We're working hard to bring you high-quality academic literacy resources that will help enhance your learning experience.</p>
             </div>
             
-            <div class="media-grid" id="audio-content" style="display: none;">
-                <!-- Audio content will be displayed here -->
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-headphones"></i>
-                        <div class="duration">24:10</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Academic Podcast: Citation Styles</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-play-circle"></i> 845 plays</span>
-                            <span>5 days ago</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-headphones"></i>
-                        <div class="duration">31:45</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Interview with Dr. Smith on Literacy</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-play-circle"></i> 1.2K plays</span>
-                            <span>2 weeks ago</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media-card">
-                    <div class="media-thumbnail">
-                        <i class="fas fa-headphones"></i>
-                        <div class="duration">18:30</div>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">Study Skills Audio Guide</div>
-                        <div class="media-meta">
-                            <span><i class="far fa-play-circle"></i> 956 plays</span>
-                            <span>3 weeks ago</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="empty-state" id="empty-content" style="display: none;">
-                <i class="fas fa-folder-open"></i>
-                <h3>No content available</h3>
-                <p>This section is currently empty. Content will appear here once added.</p>
+            <div class="empty-state" id="audio-content" style="display: none;">
+                <i class="fas fa-music"></i>
+                <h3>Visit Soon for New Content</h3>
+                <p>Our audio resources section is being prepared. Soon you'll have access to podcasts, lectures, and other audio materials to support your academic journey.</p>
             </div>
         </main>
         
@@ -479,7 +326,8 @@
             const tabs = document.querySelectorAll('.tab');
             const videoContent = document.getElementById('video-content');
             const audioContent = document.getElementById('audio-content');
-            const emptyContent = document.getElementById('empty-content');
+            const contentHeader = document.querySelector('.content-header h2');
+            const contentIcon = document.querySelector('.content-header h2 i');
             
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -494,17 +342,13 @@
                     
                     // Show appropriate content
                     if (tabType === 'video') {
-                        videoContent.style.display = 'grid';
+                        videoContent.style.display = 'flex';
                         audioContent.style.display = 'none';
-                        emptyContent.style.display = 'none';
+                        contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
                     } else if (tabType === 'audio') {
                         videoContent.style.display = 'none';
-                        audioContent.style.display = 'grid';
-                        emptyContent.style.display = 'none';
-                    } else {
-                        videoContent.style.display = 'none';
-                        audioContent.style.display = 'none';
-                        emptyContent.style.display = 'block';
+                        audioContent.style.display = 'flex';
+                        contentHeader.innerHTML = '<i class="fas fa-headphones"></i> Audio Resources';
                     }
                 });
             });
