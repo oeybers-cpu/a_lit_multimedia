@@ -187,6 +187,46 @@
             outline: none;
         }
 
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--lighter-accent);
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .video-description {
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
         .empty-state {
             text-align: center;
             padding: 60px 20px;
@@ -261,6 +301,11 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .video-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -303,10 +348,26 @@
                 </div>
             </div>
             
-            <div class="empty-state" id="video-content">
-                <i class="fas fa-video"></i>
-                <h3>Visit Soon for New Content</h3>
-                <p>Our video library is currently under development. We're working hard to bring you high-quality academic literacy resources that will help enhance your learning experience.</p>
+            <div id="video-content">
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/The_Hidden_Rules_of_Language.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                
+                <div class="video-info">
+                    <h2 class="video-title">The Hidden Rules of Language</h2>
+                    <div class="video-meta">
+                        <span><i class="far fa-calendar"></i> Published: October 15, 2023</span>
+                        <span><i class="far fa-clock"></i> Duration: 15:42</span>
+                        <span><i class="far fa-eye"></i> Views: 1,247</span>
+                    </div>
+                    <div class="video-description">
+                        <p>This video explores the unspoken rules and conventions that govern academic language and communication. Understanding these hidden rules is essential for success in higher education and professional settings.</p>
+                        <p>Topics covered include: academic register, formal vs. informal language, hedging in academic writing, and disciplinary discourse conventions.</p>
+                    </div>
+                </div>
             </div>
             
             <div class="empty-state" id="audio-content" style="display: none;">
@@ -327,7 +388,6 @@
             const videoContent = document.getElementById('video-content');
             const audioContent = document.getElementById('audio-content');
             const contentHeader = document.querySelector('.content-header h2');
-            const contentIcon = document.querySelector('.content-header h2 i');
             
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -342,7 +402,7 @@
                     
                     // Show appropriate content
                     if (tabType === 'video') {
-                        videoContent.style.display = 'flex';
+                        videoContent.style.display = 'block';
                         audioContent.style.display = 'none';
                         contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
                     } else if (tabType === 'audio') {
