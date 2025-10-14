@@ -7,20 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
-            -webkit-locale: "en";
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
-            --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
-            --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
             --primary: #3a86ff;
             --secondary: #4361ee;
             --accent: #7209b7;
-            --dark: #0f1419;
-            --darker: #0a0d10;
+            --dark: #0a0a0a;
+            --darker: #050505;
             --light: #f8f9fa;
-            --card-bg: rgba(25, 30, 40, 0.8);
+            --card-bg: rgba(20, 20, 25, 0.9);
             --lighter-accent: #90e0ef;
             --royal-blue: #4361ee;
             --royal-blue-light: #4895ef;
@@ -35,7 +31,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background-color: #000000;
             color: var(--light);
             line-height: 1.6;
             min-height: 100vh;
@@ -46,7 +42,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: var(--card-gap);
             padding: 20px;
         }
@@ -322,6 +318,52 @@
             transform: translateY(-2px);
         }
 
+        /* New styles for better organization */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--lighter-accent);
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        .card-description p {
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
@@ -378,6 +420,11 @@
                 align-items: center;
                 gap: 10px;
             }
+            
+            .card-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -425,48 +472,51 @@
                 </div>
             </div>
             
-            <div id="video-content">
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/The_Hidden_Rules_of_Language.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+            <div id="video-content" class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/The_Hidden_Rules_of_Language.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="card-title">The Hidden Rules of Language</h2>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar"></i> Published: October 15, 2023</span>
+                            <span><i class="far fa-clock"></i> Duration: 15:42</span>
+                            <span><i class="far fa-eye"></i> Views: 1,247</span>
+                        </div>
+                        <div class="card-description">
+                            <p>This video explores the unspoken rules and conventions that govern academic language and communication. Understanding these hidden rules is essential for success in higher education and professional settings.</p>
+                            <p>Topics covered include: academic register, formal vs. informal language, hedging in academic writing, and disciplinary discourse conventions.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="video-info">
-                    <h2 class="video-title">The Hidden Rules of Language</h2>
-                    <div class="video-meta">
-                        <span><i class="far fa-calendar"></i> Published: October 15, 2023</span>
-                        <span><i class="far fa-clock"></i> Duration: 15:42</span>
-                        <span><i class="far fa-eye"></i> Views: 1,247</span>
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Multimodal_Learning_&_Equity.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                    <div class="video-description">
-                        <p>This video explores the unspoken rules and conventions that govern academic language and communication. Understanding these hidden rules is essential for success in higher education and professional settings.</p>
-                        <p>Topics covered include: academic register, formal vs. informal language, hedging in academic writing, and disciplinary discourse conventions.</p>
-                    </div>
-                </div>
-                
-                <!-- NEW VIDEO ADDED HERE -->
-                <div class="video-container">
-                    <video controls>
-                        <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Multimodal_Learning_&_Equity.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                
-                <div class="video-info">
-                    <h2 class="video-title">Multimodal Learning & Equity</h2>
-                    <div class="video-meta">
-                        <span><i class="far fa-calendar"></i> Published: November 10, 2023</span>
-                        <span><i class="far fa-clock"></i> Duration: 18:32</span>
-                        <span><i class="far fa-eye"></i> Views: 428</span>
-                    </div>
-                    <div class="video-description">
-                        <p>This video examines how multimodal approaches in education promote equity by incorporating diverse learning styles and resources. Drawing from historical wisdom like Imhotep's polymathic approach to knowledge, we explore how integrating visual, auditory, and interactive elements creates more inclusive classrooms.</p>
-                        <p>Imhotep lived over 4,000 years ago during Egypt's Old Kingdom, specifically around the 27th to 26th century BCE. He held prominent roles in society, serving as chancellor to Pharaoh Djoser and as high priest of the sun god Ra at the sacred city of Heliopolis. His influence extended across both political and religious spheres, making him one of the most revered figures of his time.</p>
-                        <p>Widely recognized as a polymath, Imhotep demonstrated exceptional skill and innovation in multiple fields. As the architect of the Step Pyramid at Saqqara—the first monumental stone structure in history—he revolutionized Egyptian architecture. He was also a pioneering physician, often credited as the founder of Egyptian medicine, with his teachings influencing healing practices for centuries. In addition, he contributed to astronomy and philosophical thought, earning a reputation as a sage and advisor.</p>
-                        <p>The name Imhotep translates to "He who comes in peace," a reflection of his legacy as a bringer of wisdom, healing, and harmony. His contributions were so profound that he was later deified as the god of medicine and wisdom—one of the few mortals in ancient Egypt to be granted divine status. His enduring legacy continues to symbolize the depth and sophistication of African intellectual traditions.</p>
-                        <p>"Imhotep was deified after his death as the god of medicine and wisdom, one of the few mortals to achieve divine status in ancient Egypt."</p>
+                    
+                    <div class="card-content">
+                        <h2 class="card-title">Multimodal Learning & Equity</h2>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar"></i> Published: November 10, 2023</span>
+                            <span><i class="far fa-clock"></i> Duration: 18:32</span>
+                            <span><i class="far fa-eye"></i> Views: 428</span>
+                        </div>
+                        <div class="card-description">
+                            <p>This video examines how multimodal approaches in education promote equity by incorporating diverse learning styles and resources. Drawing from historical wisdom like Imhotep's polymathic approach to knowledge, we explore how integrating visual, auditory, and interactive elements creates more inclusive classrooms.</p>
+                            <p>Imhotep lived over 4,000 years ago during Egypt's Old Kingdom, specifically around the 27th to 26th century BCE. He held prominent roles in society, serving as chancellor to Pharaoh Djoser and as high priest of the sun god Ra at the sacred city of Heliopolis. His influence extended across both political and religious spheres, making him one of the most revered figures of his time.</p>
+                            <p>Widely recognized as a polymath, Imhotep demonstrated exceptional skill and innovation in multiple fields. As the architect of the Step Pyramid at Saqqara—the first monumental stone structure in history—he revolutionized Egyptian architecture. He was also a pioneering physician, often credited as the founder of Egyptian medicine, with his teachings influencing healing practices for centuries. In addition, he contributed to astronomy and philosophical thought, earning a reputation as a sage and advisor.</p>
+                            <p>The name Imhotep translates to "He who comes in peace," a reflection of his legacy as a bringer of wisdom, healing, and harmony. His contributions were so profound that he was later deified as the god of medicine and wisdom—one of the few mortals in ancient Egypt to be granted divine status. His enduring legacy continues to symbolize the depth and sophistication of African intellectual traditions.</p>
+                            <p>"Imhotep was deified after his death as the god of medicine and wisdom, one of the few mortals to achieve divine status in ancient Egypt."</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -502,7 +552,7 @@
                     
                     const tabType = this.getAttribute('data-tab');
                     if (tabType === 'video') {
-                        videoContent.style.display = 'block';
+                        videoContent.style.display = 'grid';
                         audioContent.style.display = 'none';
                         contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
                     } else if (tabType === 'audio') {
