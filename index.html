@@ -202,15 +202,6 @@
             color: var(--lighter-accent);
         }
 
-        .sort-options select {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 8px 15px;
-            color: var(--light);
-            outline: none;
-        }
-
         .video-container {
             width: 100%;
             max-width: 800px;
@@ -462,17 +453,38 @@
         <main class="content">
             <div class="content-header">
                 <h2><i class="fas fa-play-circle"></i> Video Library</h2>
-                <div class="sort-options">
-                    <select>
-                        <option>Sort by: Most Recent</option>
-                        <option>Sort by: Most Popular</option>
-                        <option>Sort by: Duration</option>
-                        <option>Sort by: Title</option>
-                    </select>
-                </div>
+                <!-- Removed sort options as requested -->
             </div>
             
+            <!-- Videos are now ordered with newest first -->
             <div id="video-content" class="video-grid">
+                <!-- Newest video first -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Multimodal_Learning_&_Equity.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="card-title">Multimodal Learning & Equity</h2>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar"></i> Published: November 10, 2023</span>
+                            <span><i class="far fa-clock"></i> Duration: 18:32</span>
+                            <span><i class="far fa-eye"></i> Views: 428</span>
+                        </div>
+                        <div class="card-description">
+                            <p>This video examines how multimodal approaches in education promote equity by incorporating diverse learning styles and resources. Drawing from historical wisdom like Imhotep's polymathic approach to knowledge, we explore how integrating visual, auditory, and interactive elements creates more inclusive classrooms.</p>
+                            <p>Imhotep lived over 4,000 years ago during Egypt's Old Kingdom, specifically around the 27th to 26th century BCE. He held prominent roles in society, serving as chancellor to Pharaoh Djoser and as high priest of the sun god Ra at the sacred city of Heliopolis. His influence extended across both political and religious spheres, making him one of the most revered figures of his time.</p>
+                            <p>Widely recognized as a polymath, Imhotep demonstrated exceptional skill and innovation in multiple fields. As the architect of the Step Pyramid at Saqqara—the first monumental stone structure in history—he revolutionized Egyptian architecture. He was also a pioneering physician, often credited as the founder of Egyptian medicine, with his teachings influencing healing practices for centuries. In addition, he contributed to astronomy and philosophical thought, earning a reputation as a sage and advisor.</p>
+                            <p>The name Imhotep translates to "He who comes in peace," a reflection of his legacy as a bringer of wisdom, healing, and harmony. His contributions were so profound that he was later deified as the god of medicine and wisdom—one of the few mortals in ancient Egypt to be granted divine status. His enduring legacy continues to symbolize the depth and sophistication of African intellectual traditions.</p>
+                            <p>"Imhotep was deified after his death as the god of medicine and wisdom, one of the few mortals to achieve divine status in ancient Egypt."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Older video second -->
                 <div class="video-card">
                     <div class="video-container">
                         <video controls>
@@ -494,27 +506,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="video-card">
-                    <div class="video-container">
-                        <video controls>
-                            <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Multimodal_Learning_&_Equity.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    
-                    <div class="card-content">
-                        <h2 class="card-title">Multimodal Learning & Equity</h2>
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar"></i> Published: November 10, 2023</span>
-                            <span><i class="far fa-clock"></i> Duration: 18:32</span>
-                            <span><i class="far fa-eye"></i> Views: 428</span>
-                        </div>
-                        <div class="card-description">
-                            <p>This video examines how multimodal approaches in education promote equity by incorporating diverse learning styles and resources. Here, we explore how integrating visual, auditory, and interactive elements creates more inclusive classrooms.</p
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="empty-state" id="audio-content" style="display: none;">
@@ -525,7 +516,7 @@
         </main>
         
         <footer>
-            <p>Academic Literacy Hub &copy; 2025 | Empowering Students Through Academic Literacy</p>
+            <p>Academic Literacy Hub &copy; 2023 | Empowering Students Through Quality Educational Resources</p>
             <div class="footer-links">
                 <a href="https://oeybers-cpu.github.io/a_lit_models/" class="footer-link">
                     <i class="fas fa-home"></i> Home
@@ -541,23 +532,48 @@
             const audioContent = document.getElementById('audio-content');
             const contentHeader = document.querySelector('.content-header h2');
             
+            // Function to switch tabs
+            function switchTab(tabType) {
+                if (tabType === 'video') {
+                    videoContent.style.display = 'grid';
+                    audioContent.style.display = 'none';
+                    contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
+                } else if (tabType === 'audio') {
+                    videoContent.style.display = 'none';
+                    audioContent.style.display = 'flex';
+                    contentHeader.innerHTML = '<i class="fas fa-headphones"></i> Audio Resources';
+                }
+            }
+            
+            // Set up tab click events
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     tabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     
                     const tabType = this.getAttribute('data-tab');
-                    if (tabType === 'video') {
-                        videoContent.style.display = 'grid';
-                        audioContent.style.display = 'none';
-                        contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
-                    } else if (tabType === 'audio') {
-                        videoContent.style.display = 'none';
-                        audioContent.style.display = 'flex';
-                        contentHeader.innerHTML = '<i class="fas fa-headphones"></i> Audio Resources';
-                    }
+                    switchTab(tabType);
                 });
             });
+            
+            // Ensure videos are always sorted with newest first
+            function sortVideosByDate() {
+                const videoGrid = document.getElementById('video-content');
+                const videoCards = Array.from(videoGrid.querySelectorAll('.video-card'));
+                
+                // Sort by date (extract date from meta info)
+                videoCards.sort((a, b) => {
+                    const dateA = new Date(a.querySelector('.card-meta span:first-child').textContent.replace('Published: ', ''));
+                    const dateB = new Date(b.querySelector('.card-meta span:first-child').textContent.replace('Published: ', ''));
+                    return dateB - dateA; // Newest first
+                });
+                
+                // Re-append in sorted order
+                videoCards.forEach(card => videoGrid.appendChild(card));
+            }
+            
+            // Initialize the page
+            sortVideosByDate();
         });
     </script>
 </body>
