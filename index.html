@@ -462,6 +462,28 @@
                 <div class="video-card">
                     <div class="video-container">
                         <video controls>
+                            <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Literacy_in_the_AI_Age.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="card-title">Literacy in the AI Age</h2>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar"></i> Published: December 15, 2023</span>
+                            <span><i class="far fa-clock"></i> Duration: 22:15</span>
+                            <span><i class="far fa-eye"></i> Views: 0</span>
+                        </div>
+                        <div class="card-description">
+                            <p>This video explores the evolving nature of literacy in the age of artificial intelligence. It discusses how AI tools are changing the way we read, write, and communicate, and what it means for education and society.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Second newest video -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls>
                             <source src="https://github.com/oeybers-cpu/a_lit_multimedia/raw/refs/heads/main/Multimodal_Learning_&_Equity.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -480,7 +502,7 @@
                     </div>
                 </div>
                 
-                <!-- Older video second -->
+                <!-- Older video third -->
                 <div class="video-card">
                     <div class="video-container">
                         <video controls>
@@ -507,70 +529,4 @@
             <div class="empty-state" id="audio-content" style="display: none;">
                 <i class="fas fa-music"></i>
                 <h3>Visit Soon for New Content</h3>
-                <p>Our audio resources section is being prepared. Soon you'll have access to podcasts, lectures, and other audio materials to support your academic journey.</p>
-            </div>
-        </main>
-        
-        <footer>
-            <p>Academic Literacy Hub &copy; 2023 | Empowering Students Through Quality Educational Resources</p>
-            <div class="footer-links">
-                <a href="https://oeybers-cpu.github.io/a_lit_models/" class="footer-link">
-                    <i class="fas fa-home"></i> Home
-                </a>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const videoContent = document.getElementById('video-content');
-            const audioContent = document.getElementById('audio-content');
-            const contentHeader = document.querySelector('.content-header h2');
-            
-            // Function to switch tabs
-            function switchTab(tabType) {
-                if (tabType === 'video') {
-                    videoContent.style.display = 'grid';
-                    audioContent.style.display = 'none';
-                    contentHeader.innerHTML = '<i class="fas fa-play-circle"></i> Video Library';
-                } else if (tabType === 'audio') {
-                    videoContent.style.display = 'none';
-                    audioContent.style.display = 'flex';
-                    contentHeader.innerHTML = '<i class="fas fa-headphones"></i> Audio Resources';
-                }
-            }
-            
-            // Set up tab click events
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const tabType = this.getAttribute('data-tab');
-                    switchTab(tabType);
-                });
-            });
-            
-            // Ensure videos are always sorted with newest first
-            function sortVideosByDate() {
-                const videoGrid = document.getElementById('video-content');
-                const videoCards = Array.from(videoGrid.querySelectorAll('.video-card'));
-                
-                // Sort by date (extract date from meta info)
-                videoCards.sort((a, b) => {
-                    const dateA = new Date(a.querySelector('.card-meta span:first-child').textContent.replace('Published: ', ''));
-                    const dateB = new Date(b.querySelector('.card-meta span:first-child').textContent.replace('Published: ', ''));
-                    return dateB - dateA; // Newest first
-                });
-                
-                // Re-append in sorted order
-                videoCards.forEach(card => videoGrid.appendChild(card));
-            }
-            
-            // Initialize the page
-            sortVideosByDate();
-        });
-    </script>
-</body>
-</html>
+                <p>Our audio resources section is being
